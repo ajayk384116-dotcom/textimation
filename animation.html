@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Animator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Text Animator</h1>
+
+    <textarea id="text-input" placeholder="Type something..."></textarea>
+
+    <button id="animate-button">Animate</button>
+
+    <div id="animation-display"></div>
+
+    <br><br>
+    <a href="index.html"><button>Back to Home</button></a>
+</div>
+
+
+<script>
+document.getElementById("animate-button").addEventListener("click", function () {
+    const input = document.getElementById("text-input").value.trim();
+    const display = document.getElementById("animation-display");
+
+    display.innerHTML = "";
+
+    if (input === "") return;
+
+    for (let i = 0; i < input.length; i++) {
+        const span = document.createElement("span");
+        span.classList.add("letter");
+        span.style.animationDelay = (i * 0.1) + "s";
+        span.textContent = input[i] === " " ? "\u00A0" : input[i];
+        display.appendChild(span);
+    }
+});
+</script>
+
+</body>
+</html>
